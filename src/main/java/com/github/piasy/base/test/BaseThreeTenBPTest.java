@@ -54,9 +54,19 @@ public class BaseThreeTenBPTest {
             File dat = new File("../testbase/src/main/assets/org/threeten/bp/TZDB.dat");
             System.out.println(dat.getAbsolutePath());
             if (dat.exists()) {
+                System.out.println("got TZDB");
                 is = new FileInputStream(dat);
             } else {
-                throw new FileNotFoundException("TZDB.dat");
+                System.out.println("TZDB not found!");
+                dat = new File("testbase/src/main/assets/org/threeten/bp/TZDB.dat");
+                System.out.println("try " + dat.getAbsolutePath() + " again");
+                if (dat.exists()) {
+                    System.out.println("got TZDB");
+                    is = new FileInputStream(dat);
+                } else {
+                    System.out.println("TZDB not found! Give up...");
+                    throw new FileNotFoundException("TZDB.dat");
+                }
             }
             ZoneRulesProvider.registerProvider(new TzdbZoneRulesProvider(is));
         } catch (IOException e) {

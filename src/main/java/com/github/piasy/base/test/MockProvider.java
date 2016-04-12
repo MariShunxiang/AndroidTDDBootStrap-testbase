@@ -73,4 +73,33 @@ public final class MockProvider {
                 "\"avatar_url\":\"https://avatars.githubusercontent.com/u/3098704?v=3\"," +
                 "\"type\":\"User\"}]}";
     }
+
+    public static String provideLGMetaV1() {
+        return "{\"version\":1,\"parts\":[\"ligui-pics-part-1.json\"]}";
+    }
+
+    public static String provideLGMetaV2() {
+        return "{\"version\":2,\"parts\":[\"ligui-pics-part-1.json\"]}";
+    }
+
+    public static String provideLGAlbumsV1() {
+        return "[{\"name\":\"[Ligui] 丽柜 2016.04.04 Model 妮可 [30P]\",\"cover\":\"http://i7.umei" +
+                ".cc//img2012/2016/04/01/005LIGUI20160404/cover.jpg\"," +
+                "\"firstPageUrl\":\"http://www.umei.cc/p/gaoqing/cn/20160405185812.htm\"," +
+                "\"pics\":[\"http://i7.umei.cc//img2012/2016/04/01/005LIGUI20160404/000_7590" +
+                ".jpg\",\"http://i7.umei.cc//img2012/2016/04/01/005LIGUI20160404/cover.jpg\"]}]";
+    }
+
+    public static String provideLGAlbumsV2() {
+        return "[{\"name\":\"[Ligui] 丽柜 2016.04.04 Model 妮可 [30P]\",\"cover\":\"http://i7.umei" +
+                ".cc//img2012/2016/04/01/005LIGUI20160404/cover.jpg\"," +
+                "\"firstPageUrl\":\"http://www.umei.cc/p/gaoqing/cn/20160405185812.htm\"," +
+                "\"pics\":[\"http://i7.umei.cc//img2012/2016/04/01/005LIGUI20160404/000_7590" +
+                ".jpg\",\"http://i7.umei.cc//img2012/2016/04/01/005LIGUI20160404/cover.jpg\"]}," +
+                "{\"name\":\"[Ligui] 丽柜 2016.03.31 Model 妮可 [25P]\",\"cover\":\"http://i7.umei" +
+                ".cc//img2012/2016/04/01/001LIGUI20160331/cover.jpg\"," +
+                "\"firstPageUrl\":\"http://www.umei.cc/p/gaoqing/cn/20160401195701.htm\"," +
+                "\"pics\":[\"http://i7.umei.cc//img2012/2016/04/01/001LIGUI20160331/000_7513" +
+                ".jpg\",\"http://i7.umei.cc//img2012/2016/04/01/001LIGUI20160331/cover.jpg\"]}]";
+    }
 }
