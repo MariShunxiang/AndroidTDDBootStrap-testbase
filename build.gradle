@@ -54,37 +54,37 @@ android {
 
 dependencies {
     def baseDependencies = rootProject.ext.baseDependencies
-    def appTestDependencies = rootProject.ext.appTestDependencies
+    def testDependencies = rootProject.ext.testDependencies
 
     //compile baseDependencies.androidSupportAppCompatV7
     compile baseDependencies.threetenabp
-    compile(appTestDependencies.junit) {
+    compile(testDependencies.junit) {
         exclude module: 'hamcrest-core'
     }
-    compile appTestDependencies.hamcrestLibrary
+    compile testDependencies.hamcrestLibrary
 
-    compile(appTestDependencies.restMockAndroid) {
+    compile(testDependencies.restMockAndroid) {
         exclude module: 'junit'
         exclude module: 'rules'
         exclude module: 'runner'
     }
-    compile(appTestDependencies.restMockCore) {
+    compile(testDependencies.restMockCore) {
         exclude group: 'org.bouncycastle', module: 'bcprov-jdk15on'
     }
 
-    compile(appTestDependencies.espresso) {
+    compile(testDependencies.espresso) {
         exclude module: 'hamcrest-library'
         exclude module: 'rules'
         exclude module: 'runner'
         exclude module: 'javax.annotation-api'
     }
-    compile(appTestDependencies.espessoContrib) {
+    compile(testDependencies.espessoContrib) {
         exclude module: 'espresso-core'
         exclude module: 'support-v4'
         exclude module: 'recyclerview-v7'
         exclude module: 'hamcrest-core'
     }
-    compile(appTestDependencies.espressoIntents) {
+    compile(testDependencies.espressoIntents) {
         exclude module: 'espresso-core'
     }
 }
