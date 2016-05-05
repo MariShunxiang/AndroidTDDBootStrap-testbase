@@ -66,7 +66,6 @@ dependencies {
         exclude module: 'junit'
         exclude module: 'rules'
         exclude module: 'runner'
-        exclude module: 'bcprov-jdk15on'
     }
     compile(testDependencies.espresso) {
         exclude module: 'hamcrest-library'
