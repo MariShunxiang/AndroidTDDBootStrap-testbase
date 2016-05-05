@@ -66,9 +66,7 @@ dependencies {
         exclude module: 'junit'
         exclude module: 'rules'
         exclude module: 'runner'
-    }
-    compile(testDependencies.restMockCore) {
-        exclude group: 'org.bouncycastle', module: 'bcprov-jdk15on'
+        exclude module: 'bcprov-jdk15on'
     }
     compile(testDependencies.espresso) {
         exclude module: 'hamcrest-library'
