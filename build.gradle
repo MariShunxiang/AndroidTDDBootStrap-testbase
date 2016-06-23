@@ -62,10 +62,12 @@ dependencies {
         exclude module: 'hamcrest-core'
     }
     compile testDependencies.hamcrestLibrary
+    compile testDependencies.mockWebServer
     compile(testDependencies.restMockAndroid) {
         exclude module: 'junit'
         exclude module: 'rules'
         exclude module: 'runner'
+        exclude module: 'mockwebserver'
     }
     compile(testDependencies.espresso) {
         exclude module: 'hamcrest-library'
