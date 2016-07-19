@@ -76,6 +76,7 @@ dependencies {
         exclude module: 'javax.annotation-api'
     }
     compile(testDependencies.espessoContrib) {
+        exclude module: 'design'
         exclude module: 'espresso-core'
         exclude module: 'support-v4'
         exclude module: 'recyclerview-v7'
