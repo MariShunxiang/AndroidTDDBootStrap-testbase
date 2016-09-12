@@ -22,11 +22,9 @@
  * SOFTWARE.
  */
 
-package com.github.piasy.base.test;
+package com.github.piasy.test;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import android.content.Context;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -36,38 +34,21 @@ import org.threeten.bp.zone.ZoneRulesProvider;
 /**
  * Created by Piasy{github.com/Piasy} on 15/8/16.
  *
- * Base JUnit test case related to JSR-310 library.
+ * Base AndroidJUnit test case related to JSR-310 library.
  */
-public class BaseThreeTenBPTest {
+public class BaseThreeTenBPAndroidTest {
     private static final AtomicBoolean initialized = new AtomicBoolean();
 
-    protected BaseThreeTenBPTest() {
+    protected BaseThreeTenBPAndroidTest() {
         // design to be extended
     }
 
-    protected void initThreeTenBP() {
+    protected void initThreeTenABP(final Context context) {
         if (initialized.getAndSet(true)) {
             return;
         }
         try {
-            InputStream is;
-            File dat = new File("../testbase/src/main/assets/org/threeten/bp/TZDB.dat");
-            System.out.println(dat.getAbsolutePath());
-            if (dat.exists()) {
-                System.out.println("got TZDB");
-                is = new FileInputStream(dat);
-            } else {
-                System.out.println("TZDB not found!");
-                dat = new File("testbase/src/main/assets/org/threeten/bp/TZDB.dat");
-                System.out.println("try " + dat.getAbsolutePath() + " again");
-                if (dat.exists()) {
-                    System.out.println("got TZDB");
-                    is = new FileInputStream(dat);
-                } else {
-                    System.out.println("TZDB not found! Give up...");
-                    throw new FileNotFoundException("TZDB.dat");
-                }
-            }
+            final InputStream is = context.getAssets().open("org/threeten/bp/TZDB.dat");
             ZoneRulesProvider.registerProvider(new TzdbZoneRulesProvider(is));
         } catch (IOException e) {
             throw new IllegalStateException("TZDB.dat missing from assets.", e);

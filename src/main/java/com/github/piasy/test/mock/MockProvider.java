@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.github.piasy.base.test;
+package com.github.piasy.test.mock;
 
 /**
  * Created by Piasy{github.com/Piasy} on 15/8/9.

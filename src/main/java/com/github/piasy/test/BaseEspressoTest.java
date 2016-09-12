@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.github.piasy.base.test;
+package com.github.piasy.test;
 
 import java.io.IOException;
 import org.junit.After;

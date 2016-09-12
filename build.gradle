@@ -37,8 +37,8 @@ android {
     defaultConfig {
         minSdkVersion rootProject.ext.androidMinSdkVersion
         targetSdkVersion rootProject.ext.androidTargetSdkVersion
-        versionCode rootProject.ext.versionCode
-        versionName rootProject.ext.versionName
+        versionCode rootProject.ext.releaseVersionCode
+        versionName rootProject.ext.releaseVersionName
     }
 
     buildTypes {
@@ -55,11 +55,22 @@ android {
 
 dependencies {
     def baseDependencies = rootProject.ext.baseDependencies
+    def modelDependencies = rootProject.ext.modelDependencies
     def testDependencies = rootProject.ext.testDependencies
 
-    compile baseDependencies.threetenabp
+    provided baseDependencies.androidSupportAppCompatV7
+    provided baseDependencies.threetenabp
+    provided baseDependencies.retrofitRxJavaAdapter
+    provided modelDependencies.multiDex
+
     compile(testDependencies.junit) {
         exclude module: 'hamcrest-core'
+    }
+    compile(testDependencies.mockito) {
+        exclude module: 'hamcrest-core'
+    }
+    compile(testDependencies.jsonAssert) {
+        exclude module: 'json'
     }
     compile testDependencies.hamcrestLibrary
     compile testDependencies.mockWebServer
@@ -74,6 +85,7 @@ dependencies {
         exclude module: 'rules'
         exclude module: 'runner'
         exclude module: 'javax.annotation-api'
+        exclude group: 'javax.inject'
     }
     compile(testDependencies.espessoContrib) {
         exclude module: 'design'
@@ -84,5 +96,12 @@ dependencies {
     }
     compile(testDependencies.espressoIntents) {
         exclude module: 'espresso-core'
+    }
+    compile(testDependencies.androidJUnitRunner) {
+        exclude module: 'support-annotations'
+    }
+    compile(testDependencies.androidJUnit4Rules) {
+        exclude module: 'support-annotations'
+        exclude module: 'hamcrest-core'
     }
 }
