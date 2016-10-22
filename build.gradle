@@ -63,6 +63,10 @@ dependencies {
     provided baseDependencies.androidSupportAppCompatV7
     provided baseDependencies.threetenabp
     provided baseDependencies.retrofitRxJavaAdapter
+    provided baseDependencies.rxJava
+    provided(baseDependencies.rxAndroid) {
+        exclude module: 'rxjava'
+    }
     provided modelDependencies.multiDex
 
     compile(testDependencies.junit) {

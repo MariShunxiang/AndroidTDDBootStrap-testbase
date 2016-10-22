@@ -11,11 +11,20 @@ import retrofit2.Response;
 import retrofit2.adapter.rxjava.HttpException;
 
 /**
- * Created by Piasy{github.com/Piasy} on 5/5/16.
+ * Created by Piasy{github.com/Piasy} on 17/10/2016.
  */
-public final class ApiErrorUtil {
-    private ApiErrorUtil() {
+
+public final class TestUtil {
+    private TestUtil() {
         // no instance
+    }
+
+    public static void sleep(int millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public static HttpException nonApiError() {
