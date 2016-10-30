@@ -1,13 +1,11 @@
 package com.github.piasy.test.rules;
 
+import io.reactivex.android.plugins.RxAndroidPlugins;
+import io.reactivex.plugins.RxJavaPlugins;
+import io.reactivex.schedulers.Schedulers;
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
-import rx.Scheduler;
-import rx.android.plugins.RxAndroidPlugins;
-import rx.android.plugins.RxAndroidSchedulersHook;
-import rx.plugins.RxJavaHooks;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by Piasy{github.com/Piasy} on 17/10/2016.
@@ -27,22 +25,18 @@ public class RxJavaRule implements TestRule {
     }
 
     private void setSchedulerHook() {
-        RxJavaHooks.clear();
-        RxJavaHooks.setOnIOScheduler(scheduler -> Schedulers.immediate());
-        RxJavaHooks.setOnComputationScheduler(scheduler -> Schedulers.immediate());
-        RxJavaHooks.setOnNewThreadScheduler(scheduler -> Schedulers.immediate());
+        RxJavaPlugins.reset();
+        RxJavaPlugins.onIoScheduler(Schedulers.trampoline());
+        RxJavaPlugins.onComputationScheduler(Schedulers.trampoline());
+        RxJavaPlugins.onNewThreadScheduler(Schedulers.trampoline());
+        RxJavaPlugins.onSingleScheduler(Schedulers.trampoline());
 
-        RxAndroidPlugins.getInstance().reset();
-        RxAndroidPlugins.getInstance().registerSchedulersHook(new RxAndroidSchedulersHook() {
-            @Override
-            public Scheduler getMainThreadScheduler() {
-                return Schedulers.immediate();
-            }
-        });
+        RxAndroidPlugins.reset();
+        RxAndroidPlugins.onMainThreadScheduler(Schedulers.trampoline());
     }
 
     private void resetSchedulerHook() {
-        RxJavaHooks.clear();
-        RxAndroidPlugins.getInstance().reset();
+        RxJavaPlugins.reset();
+        RxAndroidPlugins.reset();
     }
 }
