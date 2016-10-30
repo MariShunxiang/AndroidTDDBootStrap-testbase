@@ -1,6 +1,7 @@
 package com.github.piasy.test;
 
 import com.github.piasy.test.mock.MockProvider;
+import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import okhttp3.MediaType;
@@ -8,7 +9,6 @@ import okhttp3.ResponseBody;
 import okio.Buffer;
 import okio.BufferedSource;
 import retrofit2.Response;
-import retrofit2.adapter.rxjava.HttpException;
 
 /**
  * Created by Piasy{github.com/Piasy} on 17/10/2016.
