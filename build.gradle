@@ -29,11 +29,6 @@ android {
     compileSdkVersion rootProject.ext.androidCompileSdkVersion
     buildToolsVersion rootProject.ext.androidBuildToolsVersion
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
     defaultConfig {
         minSdkVersion rootProject.ext.androidMinSdkVersion
         targetSdkVersion rootProject.ext.androidTargetSdkVersion
@@ -62,10 +57,13 @@ dependencies {
 
     provided baseDependencies.androidSupportAppCompatV7
     provided baseDependencies.threetenabp
-    provided baseDependencies.retrofitRxJava2Adapter
+    provided(baseDependencies.retrofitRxJava2Adapter) {
+        exclude module: 'rxjava'
+        exclude module: 'okhttp'
+    }
     provided baseDependencies.rxJava2
     provided(baseDependencies.rxAndroid2) {
-        exclude module: 'rxjava2'
+        exclude module: 'rxjava'
     }
     provided modelDependencies.multiDex
 

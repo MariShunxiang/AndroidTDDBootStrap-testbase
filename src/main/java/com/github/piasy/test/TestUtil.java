@@ -1,6 +1,5 @@
 package com.github.piasy.test;
 
-import com.github.piasy.test.mock.MockProvider;
 import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -82,18 +81,23 @@ public final class TestUtil {
 
             @Override
             public long contentLength() {
-                return MockProvider.provideGithubAPIErrorStr().length();
+                return provideGithubAPIErrorStr().length();
             }
 
             @Override
             public BufferedSource source() {
                 try {
                     return new Buffer().readFrom(new ByteArrayInputStream(
-                            MockProvider.provideGithubAPIErrorStr().getBytes()));
+                            provideGithubAPIErrorStr().getBytes()));
                 } catch (IOException e) {
                     return null;
                 }
             }
         }));
+    }
+
+    private static String provideGithubAPIErrorStr() {
+        return "{\"message\":\"Validation Failed\",\"errors\":[{\"resource\":\"Issue\"," +
+               "\"field\":\"title\",\"code\":\"missing_field\"}]}";
     }
 }
