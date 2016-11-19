@@ -1,4 +1,4 @@
-package com.github.piasy.test.rules;
+package com.github.piasy.bootstrap.testbase.rules;
 
 import android.support.test.InstrumentationRegistry;
 import io.appflate.restmock.RESTMockServerStarter;

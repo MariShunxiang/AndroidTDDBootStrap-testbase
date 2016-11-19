@@ -22,4 +22,4 @@
   ~ SOFTWARE.
   -->
 
-<manifest package="com.github.piasy.test"/>
+<manifest package="com.github.piasy.bootstrap.testbase"/>

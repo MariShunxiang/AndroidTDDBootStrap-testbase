@@ -1,4 +1,4 @@
-package com.github.piasy.test;
+package com.github.piasy.bootstrap.testbase;
 
 import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
 import java.io.ByteArrayInputStream;

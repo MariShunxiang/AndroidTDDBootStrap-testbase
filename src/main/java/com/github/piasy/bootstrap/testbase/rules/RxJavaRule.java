@@ -1,4 +1,4 @@
-package com.github.piasy.test.rules;
+package com.github.piasy.bootstrap.testbase.rules;
 
 import io.reactivex.android.plugins.RxAndroidPlugins;
 import io.reactivex.plugins.RxJavaPlugins;
