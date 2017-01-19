@@ -51,10 +51,6 @@ android {
 }
 
 dependencies {
-    def baseDependencies = rootProject.ext.baseDependencies
-    def modelDependencies = rootProject.ext.modelDependencies
-    def testDependencies = rootProject.ext.testDependencies
-
     provided baseDependencies.androidSupportAppCompatV7
     provided baseDependencies.threetenabp
     provided(baseDependencies.retrofitRxJava2Adapter) {
