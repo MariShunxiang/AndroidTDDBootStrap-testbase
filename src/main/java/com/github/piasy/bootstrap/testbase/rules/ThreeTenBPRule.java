@@ -1,6 +1,7 @@
 package com.github.piasy.bootstrap.testbase.rules;
 
 import android.content.Context;
+import com.github.piasy.bootstrap.testbase.TestUtil;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -12,6 +13,7 @@ import org.junit.runners.model.Statement;
 import org.threeten.bp.zone.TzdbZoneRulesProvider;
 import org.threeten.bp.zone.ZoneRulesException;
 import org.threeten.bp.zone.ZoneRulesProvider;
+import timber.log.Timber;
 
 /**
  * Created by Piasy{github.com/Piasy} on 17/10/2016.
@@ -38,6 +40,7 @@ public final class ThreeTenBPRule implements TestRule {
             @Override
             public void evaluate() throws Throwable {
                 initThreeTenBP();
+                Timber.plant(new Timber.DebugTree());
                 base.evaluate();
             }
         };
@@ -64,22 +67,15 @@ public final class ThreeTenBPRule implements TestRule {
     private void init4JUnit() {
         try {
             InputStream is;
-            File dat = new File("../testbase/src/main/assets/org/threeten/bp/TZDB.dat");
+            File dat = new File(
+                    TestUtil.projectRoot() + "testbase/src/main/assets/org/threeten/bp/TZDB.dat");
             System.out.println(dat.getAbsolutePath());
             if (dat.exists()) {
                 System.out.println("got TZDB");
                 is = new FileInputStream(dat);
             } else {
-                System.out.println("TZDB not found!");
-                dat = new File("testbase/src/main/assets/org/threeten/bp/TZDB.dat");
-                System.out.println("try " + dat.getAbsolutePath() + " again");
-                if (dat.exists()) {
-                    System.out.println("got TZDB");
-                    is = new FileInputStream(dat);
-                } else {
-                    System.out.println("TZDB not found! Give up...");
-                    throw new FileNotFoundException("TZDB.dat");
-                }
+                System.out.println("TZDB not found! Give up...");
+                throw new FileNotFoundException("TZDB.dat");
             }
             ZoneRulesProvider.registerProvider(new TzdbZoneRulesProvider(is));
         } catch (ZoneRulesException ignore) {

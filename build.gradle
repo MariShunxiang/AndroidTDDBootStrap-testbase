@@ -53,6 +53,7 @@ android {
 dependencies {
     provided baseDependencies.androidSupportAppCompatV7
     provided baseDependencies.threetenabp
+    provided baseDependencies.timber
     provided(baseDependencies.retrofitRxJava2Adapter) {
         exclude module: 'rxjava'
         exclude module: 'okhttp'
@@ -61,7 +62,7 @@ dependencies {
     provided(baseDependencies.rxAndroid2) {
         exclude module: 'rxjava'
     }
-    provided modelDependencies.multiDex
+    provided baseDependencies.multiDex
 
     compile(testDependencies.junit) {
         exclude module: 'hamcrest-core'
@@ -72,6 +73,7 @@ dependencies {
     compile(testDependencies.jsonAssert) {
         exclude module: 'json'
     }
+    compile testDependencies.truth
     compile testDependencies.hamcrestLibrary
     compile testDependencies.mockWebServer
     compile(testDependencies.restMockAndroid) {

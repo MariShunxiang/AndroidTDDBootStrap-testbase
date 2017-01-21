@@ -2,6 +2,7 @@ package com.github.piasy.bootstrap.testbase;
 
 import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
 import okhttp3.MediaType;
 import okhttp3.ResponseBody;
@@ -94,6 +95,11 @@ public final class TestUtil {
                 }
             }
         }));
+    }
+
+    public static String projectRoot() {
+        final String cwd = new File(".").getAbsolutePath();
+        return cwd.substring(0, cwd.lastIndexOf("AndroidTDDBootStrap") + 20);
     }
 
     private static String provideGithubAPIErrorStr() {
