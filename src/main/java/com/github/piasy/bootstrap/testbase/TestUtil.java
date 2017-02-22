@@ -1,6 +1,5 @@
 package com.github.piasy.bootstrap.testbase;
 
-import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
@@ -8,6 +7,7 @@ import okhttp3.MediaType;
 import okhttp3.ResponseBody;
 import okio.Buffer;
 import okio.BufferedSource;
+import retrofit2.HttpException;
 import retrofit2.Response;
 
 /**
